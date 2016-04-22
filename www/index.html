@@ -28,7 +28,7 @@ window.addEventListener("load", function() {
 	makeCanvas();
 
 	var stage = new createjs.Stage("myCanvas");
-	stage.enableMouseOver(10);  // leave out if mobile
+	// stage.enableMouseOver(10);  // leave out if mobile
 	createjs.Touch.enable(stage, true);
 	sizeStage();
 
@@ -128,7 +128,10 @@ window.addEventListener("load", function() {
 
 var counter = 0;
 		
-		
+var winner = new createjs.Text("YOU WIN!", "60px Arial", "white");
+      	winner.x = 400;
+    	winner.y = 300;
+      	winner.textBaseline = "alphabetic";
 
 square.on("pressup", function pressing() {
 		console.log ("dragging");
@@ -148,6 +151,8 @@ square.on("pressup", function pressing() {
 		
 		if (counter == 6) { 
 		console.log("you win!");
+		
+		stage.addChild(winner);
 		}
 	}
 	
@@ -173,6 +178,8 @@ square2.on("pressup", function() {
 		
 		if (counter == 6) { 
 		console.log("you win!");
+		
+		stage.addChild(winner);
 		}
 	}
 	
@@ -197,6 +204,8 @@ square3.on("pressup", function() {
 		
 		if (counter == 6) { 
 		console.log("you win!");
+		
+		stage.addChild(winner);
 		}
 	}
 	
@@ -220,6 +229,8 @@ square4.on("pressup", function() {
 		
 		if (counter == 6) { 
 		console.log("you win!");
+		
+		stage.addChild(winner);
 		}
 	}
 	
@@ -243,6 +254,8 @@ square5.on("pressup", function() {
 		
 		if (counter == 6) { 
 		console.log("you win!");
+		
+		stage.addChild(winner);
 		}
 		
 	}
@@ -270,10 +283,7 @@ square6.on("pressup", function() {
 		if (counter == 6) { 
 		console.log("you win!");
 		
-		var winner = new createjs.Text("YOU WIN!", "60px Arial", "white");
-      	winner.x = 400;
-    	winner.y = 300;
-      	winner.textBaseline = "alphabetic";
+		
       	stage.addChild(winner);
 
 		stage.update();
