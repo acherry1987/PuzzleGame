@@ -115,8 +115,8 @@ window.addEventListener("load", function() {
 	// deep purple
 	var square6 = new zim.Rectangle(100, 100, "#7C68A7", null, null, 10);
 	stage.addChild(square6);
-	square6.x = 650;
-	square6.y = stageH/2;
+	square6.x = stageW/2;
+	square6.y = 450
 	
 	
 	zim.drag(square);
@@ -269,6 +269,14 @@ square6.on("pressup", function() {
 		
 		if (counter == 6) { 
 		console.log("you win!");
+		
+		var winner = new createjs.Text("YOU WIN!", "60px Arial", "white");
+      	winner.x = 400;
+    	winner.y = 300;
+      	winner.textBaseline = "alphabetic";
+      	stage.addChild(winner);
+
+		stage.update();
 		}
 	}
 	
@@ -280,11 +288,19 @@ square6.on("pressup", function() {
 	
 
     
-var winner = new createjs.Text("YOU WIN!", "40px Arial", "white");
-      winner.x = 123;
-      winner.y = 429;
-      winner.textBaseline = "alphabetic";
-      stage.addChild(winner);
+var info = new createjs.Text("Drop the squares to the APPROPRIATE circle", "40px Arial", "white");
+      info.x = 123;
+      info.y = 600;
+      info.textBaseline = "alphabetic";
+      stage.addChild(info);
+
+	stage.update();
+// 
+// var winner = new createjs.Text("YOU WIN!", "60px Arial", "white");
+//       winner.x = 400;
+//       winner.y = 100;
+//       winner.textBaseline = "alphabetic";
+//       stage.addChild(winner);
 
 	stage.update();
 
