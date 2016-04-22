@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>IC In-Class Assignment - Puzzle</title>
+
+<style>
+	body {margin:0px; padding:0px; background-color:#000; overflow:hidden;}
+	#myCanvas {position:absolute; left:0px; top:0px; background-color:#000;}
+</style>
+
+<script src=" https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+<script src="http://d309knd7es5f10.cloudfront.net/zim_2.6.1.js"></script>
+<script src="http://d309knd7es5f10.cloudfront.net/zim_2.6.1_doc.js"></script>
+
+
+<script>
+
+window.addEventListener("load", function() {
+
+	var stageW;
+	var stageH;
+	var ready = false;
+	var resize;
+	var orientation;
+
+	makeCanvas();
+
+	var stage = new createjs.Stage("myCanvas");
+	stage.enableMouseOver(10);  // leave out if mobile
+	createjs.Touch.enable(stage, true);
+	sizeStage();
+
+	// end template header
+	//------------------------------------------
+	 var totalCircles = 7;
+	 var circleColor = "#e74c3c";
+	 var size = (stageH/totalCircles)/2;
+	 var posY = size;
+
+	 var counter = 50;
+	 var textCountdown = new createjs.Text("" + counter, "20px Arial", "white"); 
+	 stage.addChild(textCountdown);
+	 textCountdown.x = stageW - 30;
+	 textCountdown.y = stageH -30;
+	 var circles = new createjs.Container();
+	 stage.addChild(circles);
+
+
+	 var circle;
+
+	 // Used to label each circle
+	 var circleNum = 1;
+
+	 for(i=0;i<totalCircles;i++) {
+	 	circle = new createjs.Shape();
+		circle.graphics.f(circleColor).dc(0,0,size);
+		circles.addChild(circle);
+		circle.x = size;
+		circle.y = posY;
+		posY = posY + size*2;
+
+		circle.num = circleNum;
+		circle.distance = size + (Math.floor(Math.random()*(stageW - size)));
+
+		circleNum += 1;
+
+	 }
+	 
+	var bigContainer = zim.Rectangle (1024, 650, "skyblue", null, null, 10);
+    stage.addChildAt(bigContainer, 0);
+	 
+	var container = new zim.Circle (60, "red", null, null);
+    bigContainer.addChildAt(container, 1);
+    container.x = 200;
+    container.y = 200;
+    
+    var circle = new zim.Circle(40, "yellow", null, null);
+	circle.x = 200;
+	circle.y = 40;
+	stage.addChildAt(circle, 3);
+	
+    
+    var container2 = new zim.Circle (60, "green", null, null);
+    bigContainer.addChildAt(container2, 1);
+    container2.x = 500;
+    container2.y = 160;
+    
+    var circle2 = new zim.Circle(40, "yellow", null, null);
+	circle.x = 100;
+	circle.y = 40;
+	bigContainer.addChildAt(circle2, 3);
+
+    var container3 = new zim.Rectangle (100, 100, "yellow", null, null, 10);
+    bigContainer.addChildAt (container3, 3);
+    container3.x = 450;
+    container3.y = 40;
+    stage.update();
+
+    var container4 = new zim.Rectangle (100, 100, "tomato", null, null, 10);
+    bigContainer.addChildAt(container4, 1);
+    container4.x = 630;
+    container4.y = 160;
+    stage.update();
+
+    var container5 = new zim.Rectangle (100, 100, "grey", null, null, 10);
+    bigContainer.addChildAt(container5, 1);
+    container5.x = 220;
+    container5.y = 450;
+    stage.update();
+
+    var container6 = new zim.Rectangle (100, 100, "lightblue", null, null, 10);
+    bigContainer.addChildAt(container6, 1);
+    container6.x = 450;
+    container6.y = 550;
+    stage.update();
+
+    var container7 = new zim.Rectangle (100, 100, "black", null, null, 10);
+    bigContainer.addChildAt(container7, 1);
+    container7.x = 630;
+    container7.y = 450;
+    stage.update();
+
+    var container8 = new zim.Rectangle (100, 100, "pink", null, null, 10);
+    bigContainer.addChildAt(container8, 1);
+    container8.x = 810;
+    container8.y = 40;
+    stage.update();
+
+    var container9 = new zim.Rectangle (100, 100, "purple", null, null, 10);
+    bigContainer.addChildAt(container9, 3);
+    container9.x = 810;
+    container9.y = 550;
+    stage.update();
+	 
+	zim.drag(circle);
+	
+	if (zim.hitTestBounds = (circle, container9)) { 
+		console.log("hitting");
+		
+		stage.update();
+	}
+	
+	
+	if (zim.hitTestCircle(circle, container3, 3)){
+		console.log("hitting");
+		//myCircle.alpha = 0;
+		//stage.removeChild(myCircle);
+		circle.x = -2000;
+		
+		stage.update();
+	}
+	
+	
+	var mySquare = new zim.Rectangle(50, 50, "black", null, null, 10);
+	stage.addChild(mySquare)
+	
+	var myCircle = new zim.Circle(40, "orange");
+	stage.addChild(myCircle)
+	
+	myCircle.x = stageW / 2;
+	myCircle.y = stageH / 2;
+	
+	zim.drag(mySquare);
+	
+	
+	if (zim.hitTestCircle(mySquare, myCircle, 8)){
+		console.log("hitting");
+		//myCircle.alpha = 0;
+		//stage.removeChild(myCircle);
+		myCircle.x = -2000;
+		
+		stage.update();
+	}
+	
+	mySquare.on("pressmove", function() {
+	console.log ("dragging");
+
+	// if (zim.hitTestBounds(mySquare, myCircle)){
+	// 	console.log("hitting");
+	// }
+
+	if (zim.hitTestCircle(mySquare, container, 8)){
+		console.log("hitting");
+		//myCircle.alpha = 0;
+		//stage.removeChild(myCircle);
+		myCircle.x = -2000;
+	}
+
+
+
+
+	stage.update();
+});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 var score = 0;
+	 var scoreArray = [];
+	 
+
+	 circles.on("click", function(e){
+	 	console.log("Distance: " + e.target.distance);
+	 	createjs.Tween.get(e.target) 
+	 		.to({x:e.target.distance},1000)
+	 		.to({x:size}, 500);
+	 	
+	 	if(scoreArray.length == 0) {
+	 		scoreArray.push(e.target.distance);
+	 		score += 1;
+	 	} 
+
+	 	else if (scoreArray[scoreArray.length - 1] < e.target.distance) {
+	 		scoreArray.push(e.target.distance);
+	 		score += 1;
+	 	} else { 
+	 		scoreArray = [];
+			score = 0;
+	 		scoreArray.push(e.target.distance);
+	 		score += 1;
+	 	}
+
+	 	if (score >= totalCircles) { 
+	 		alert("You Win");
+	 		location.reload();
+	 	}
+
+	 	counter -= 1;
+	 	if (counter == 0) {
+	 		alert("GAME OVER!");
+	 		location.reload();
+	 	}
+
+	 	console.log("Array Total: " + scoreArray);
+	 	console.log("Score: " + score);
+	 	console.log("Counter: " + counter);
+
+	 	textCountdown.text = "" + counter;
+
+	 	stage.update();
+	 });
+
+	var listener = createjs.Ticker.on("tick", stage);
+
+	resize = function() {
+		// here is where we put code to resize
+
+		stage.update();
+	}
+
+	stage.update();
+	ready = true;
+
+	// ----------------------------------------------
+	// start template footer
+	function makeCanvas() {
+		// make a canvas tag and apply attributes for id, width and height
+		var canvas = document.createElement("canvas");
+		canvas.setAttribute("id", "myCanvas");
+
+		// get maximum size for canvas
+		// note: iOS6 does not work from loading icon unless keep canvas within device size
+		// thank you apple for this and many other days of hell
+		largest = Math.max(window.innerWidth, screen.width, window.innerHeight, screen.height);
+		if (!/ip(hone|od|ad)/i.test(navigator.userAgent)) largest *= 3; // handle up to three monitors
+		canvas.setAttribute("width", largest);
+		canvas.setAttribute("height", largest);
+
+		// add our canvas tag
+		document.body.appendChild(canvas);
+
+		// stop the canvas from moving when certain keys are pressed (pgdwn, pgup, arrows, home, end)
+		// and stop scrollwheel from moving page
+		var a = function(e) {
+			if (!e) e = event;
+			if (e.keyCode && (e.keyCode >= 32 && e.keyCode <= 40)) e.preventDefault();
+		}
+		var b = function(e) {
+			if (!e) e = event;
+			e.preventDefault();
+		}
+		var c = b;
+		window.addEventListener("keydown", a);
+		window.addEventListener("mousewheel", b);
+		window.addEventListener("DOMMouseScroll", c);
+		window.addEventListener('resize', function() {
+			sizeStage();
+			if (/android|nexus/i.test(navigator.userAgent)) {
+				setTimeout(function() {
+					sizeStage();
+				}, 500); // to catch delayed screen sizes
+			}
+		});
+	}
+
+	function sizeStage() {
+		// earlier than IE9 does not have innerWidth
+		// inner is better on mobile when zoomed so can't always use client
+		// ternary operator
+		stageW = isNaN(window.innerWidth) ? window.clientWidth : window.innerWidth;
+		stageH = isNaN(window.innerHeight) ? window.clientHeight : window.innerHeight;
+
+		// if wider than high then we have horizontal (or landscape)
+		orientation = (stageW>stageH) ? "horizontal" : "vertical";
+
+		if (stage) stage.setBounds(0,0,stageW,stageH);
+		if (ready) resize();
+	}
+});
+
+</script>
+</head>
+<body>
+</body>
+</html>
