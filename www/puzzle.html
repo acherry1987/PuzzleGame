@@ -5,8 +5,8 @@
 <title>IC In-Class Assignment - Puzzle</title>
 
 <style>
-	body {margin:0px; padding:0px; background-color:#000; overflow:hidden;}
-	#myCanvas {position:absolute; left:0px; top:0px; background-color:#000;}
+	body {margin:0px; padding:0px; background-color:white; overflow:hidden;}
+	#myCanvas {position:absolute; left:0px; top:0px; background-color:white;}
 </style>
 
 <script src=" https://code.createjs.com/createjs-2015.11.26.min.js"></script>
@@ -47,31 +47,10 @@ window.addEventListener("load", function() {
 	 stage.addChild(circles);
 
 
-	 var circle;
-
-	 // Used to label each circle
-	 var circleNum = 1;
-
-	 for(i=0;i<totalCircles;i++) {
-	 	circle = new createjs.Shape();
-		circle.graphics.f(circleColor).dc(0,0,size);
-		circles.addChild(circle);
-		circle.x = size;
-		circle.y = posY;
-		posY = posY + size*2;
-
-		circle.num = circleNum;
-		circle.distance = size + (Math.floor(Math.random()*(stageW - size)));
-
-		circleNum += 1;
-
-	 }
-	 
-	var bigContainer = zim.Rectangle (1024, 650, "skyblue", null, null, 10);
-    stage.addChildAt(bigContainer, 0);
-	 
-	var container = new zim.Circle (60, "red", null, null);
-    bigContainer.addChildAt(container, 1);
+	
+	// red circle
+	var container = new zim.Circle (50, "#F3994D", null, null);
+    stage.addChild(container);
     container.x = 200;
     container.y = 200;
     
@@ -81,54 +60,78 @@ window.addEventListener("load", function() {
 	stage.addChildAt(circle, 3);
 	
     
-    var container2 = new zim.Circle (60, "green", null, null);
-    bigContainer.addChildAt(container2, 1);
+    // yellow circle
+    var container2 = new zim.Circle (50, "#FFE401", null, null);
+    // bigContainer.addChildAt(container2, 1);
     container2.x = 500;
     container2.y = 160;
+    stage.addChild(container2);
+    stage.update();
+    
+    // faded green container
+    var container10 = new zim.Circle (50, "#CCD755", null, null);
+    container10.x = 700;
+    container10.y = 160;
+    stage.addChild(container10);
+    stage.update();
+    
     
     var circle2 = new zim.Circle(40, "yellow", null, null);
 	circle.x = 100;
 	circle.y = 40;
-	bigContainer.addChildAt(circle2, 3);
+	// bigContainer.addChildAt(circle2, 0);
 
-    var container3 = new zim.Rectangle (100, 100, "yellow", null, null, 10);
-    bigContainer.addChildAt (container3, 3);
+	
+	// blueish
+    var container3 = new zim.Circle (50, "#67BCB7", null, null);
+    stage.addChild(container3);
     container3.x = 450;
     container3.y = 40;
     stage.update();
 
-    var container4 = new zim.Rectangle (100, 100, "tomato", null, null, 10);
-    bigContainer.addChildAt(container4, 1);
+	//darker blue
+    var container4 = new zim.Circle (50, "#2C89C6", null, null);
+    stage.addChild(container4);
     container4.x = 630;
     container4.y = 160;
     stage.update();
 
-    var container5 = new zim.Rectangle (100, 100, "grey", null, null, 10);
-    bigContainer.addChildAt(container5, 1);
+	// purple
+    var container5 = new zim.Circle (50, "#9E6CA7", null, null);
+    stage.addChild(container5);
     container5.x = 220;
     container5.y = 450;
     stage.update();
+    
+    // pink
+    var container6 = new zim.Circle (50, "#E86392", null, null);
+    stage.addChild(container6);
+    container6.x = 220;
+    container6.y = 450;
+    stage.update();
 
-    var container6 = new zim.Rectangle (100, 100, "lightblue", null, null, 10);
-    bigContainer.addChildAt(container6, 1);
-    container6.x = 450;
-    container6.y = 550;
+   
+    
+    var container20 = new zim.Rectangle (100, 100, "purple", null, null, 10);
+    // bigContainer.addChildAt (container20, 0);
+    container3.x = 450;
+    container3.y = 40;
     stage.update();
 
     var container7 = new zim.Rectangle (100, 100, "black", null, null, 10);
-    bigContainer.addChildAt(container7, 1);
+    // bigContainer.addChildAt(container7, 1);
     container7.x = 630;
     container7.y = 450;
     stage.update();
 
     var container8 = new zim.Rectangle (100, 100, "pink", null, null, 10);
-    bigContainer.addChildAt(container8, 1);
+    // bigContainer.addChildAt(container8, 1);
     container8.x = 810;
     container8.y = 40;
     stage.update();
 
     var container9 = new zim.Rectangle (100, 100, "purple", null, null, 10);
-    bigContainer.addChildAt(container9, 3);
+    // bigContainer.addChildAt(container9, 1);
     container9.x = 810;
     container9.y = 550;
     stage.update();
@@ -153,39 +156,118 @@ window.addEventListener("load", function() {
 	
 	
 	var mySquare = new zim.Rectangle(50, 50, "black", null, null, 10);
-	stage.addChild(mySquare)
+	stage.addChild(mySquare);
+	
+	
+	var mySquare2 = new zim.Rectangle(50, 50, "blue", null, null, 10);
+	
+	
+	var mySquare3 = new zim.Rectangle(50, 50, "red", null, null, 10);
+	
+	
+	var mySquare4 = new zim.Rectangle(50, 50, "yellow", null, null, 10);
+	
+	
+	var mySquare5 = new zim.Rectangle(50, 50, "pink", null, null, 10);
+	
+	
+	var mySquare6 = new zim.Rectangle(50, 50, "purple", null, null, 10);
+	
+	
+	var mySquare7 = new zim.Rectangle(50, 50, "gray", null, null, 10);
+	// stage.addChild(mySquare7)
+	
+	var mySquare8 = new zim.Rectangle(50, 50, "green", null, null, 10);
+	// stage.addChild(mySquare8)
+	
+	var mySquare9 = new zim.Rectangle(50, 50, "tomato", null, null, 10);
+	// stage.addChild(mySquare9)
+	
+	stage.update();
+	
+	
 	
 	var myCircle = new zim.Circle(40, "orange");
 	stage.addChild(myCircle)
+	
+	var myCircle2 = new zim.Circle(40, "purple");
+	stage.addChild(myCircle2)
+	myCircle2.x = 500;
+	myCircle2.y = 400;
+	
+	zim.drag(myCircle);
+	zim.dragRect(mySquare);
 	
 	myCircle.x = stageW / 2;
 	myCircle.y = stageH / 2;
 	
 	zim.drag(mySquare);
+	zim.drag(mySquare2);
+	zim.drag(mySquare6);
+	zim.drag(mySquare3);
+	zim.drag(mySquare4);
+	zim.drag(mySquare5);
 	
 	
+	// if (zim.hitTestCircle(mySquare, myCircle, 8)){
+// 		console.log("hitting");
+// 		//myCircle.alpha = 0;
+// 		//stage.removeChild(myCircle);
+// 		myCircle.x = -2000;
+// 		
+// 		stage.update();
+// 	}
+	
+	mySquare.on("pressmove", function() {
+	console.log ("dragging");
+
+
 	if (zim.hitTestCircle(mySquare, myCircle, 8)){
 		console.log("hitting");
 		//myCircle.alpha = 0;
 		//stage.removeChild(myCircle);
 		myCircle.x = -2000;
-		
 		stage.update();
 	}
 	
-	mySquare.on("pressmove", function() {
-	console.log ("dragging");
+var squarelist = [mySquare2, mySquare3];
+var circlelist = [container, container2]; 
 
-	// if (zim.hitTestBounds(mySquare, myCircle)){
-	// 	console.log("hitting");
-	// }
 
-	if (zim.hitTestCircle(mySquare, container, 8)){
-		console.log("hitting");
-		//myCircle.alpha = 0;
-		//stage.removeChild(myCircle);
-		myCircle.x = -2000;
-	}
+
+// for (i=0;i<9;i++){
+// 
+// 	var squarelist = [mySquare2, mySquare3];
+// 	var circlelist = [container, container2]; 
+//     var rand = Math.floor(Math.random()*squarelist.length);
+//     var rand2 = Math.floor(Math.random()*squarelist.length);
+//     eval(circlelist[rand]).addChild(eval(squarelist[rand2]));
+//     circlelist.splice(rand, 1);
+//     squarelist.splice(rand2, 1);
+//     
+//     stage.update();
+// 	
+// 	
+// 	var mySquare2 = new zim.Rectangle(50, 50, "blue", null, null, 10);
+//       
+//       createjs.Tween.get(square2)
+//             .to({
+//               y: 100,
+//               x: 500
+//             }, 400)
+//       
+// 
+// }
+// setTimeout(function(){
+//       
+//       createjs.Tween.get(square2)
+//             .to({
+//               y: 100,
+//               x: 500
+//             }, 400)
+//       
+//     }, 4000);
+
 
 
 
